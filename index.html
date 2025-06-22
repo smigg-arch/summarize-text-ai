@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MohGurt AI</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 38px;
+      background: #FF7F00;
+    }
+    textarea {
+      width: 90%;
+      padding: 10px;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+    button {
+      padding: 75px 75px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-right: 20px;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    h2 {
+      margin-top: 40px;
+    }
+    #font-buttons {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>MohGurt</h1>
+  <h1>The AI Text Summarizer</h1>
+  <h2>Enter Text Below</h2>
+  <form action="/summarize" method="post">
+    <textarea name="text" rows="20" placeholder="Paste your text here..." required></textarea>
+
+    <div id="font-buttons">
+      <button type="button" onclick="changeFont('Arial, sans-serif')">Arial</button>
+      <button type="button" onclick="changeFont('Georgia, serif')">Georgia</button>
+      <button type="button" onclick="changeFont('Courier New, monospace')">Courier New</button>
+    </div>
+
+    <button type="submit" style="font-size: 24px;">
+      Summarize
+    </button>
+  </form>
+
+  {% if summary %}
+  <div style="font-size: 20px; margin-top: 20px;">
+    <h2>Summary:</h2>
+    <p>{{ summary }}</p>
+  </div>
+  {% endif %}
+
+  <script>
+    function changeFont(fontName) {
+      document.body.style.fontFamily = fontName;
+    }
+  </script>
+</body>
+</html>
